@@ -18,7 +18,7 @@ cd "C:\Projeto\MeuApp"
 
 Gerar o apk não assinado com o comando abaixo
 ```sh
-ionic cordova build android --release --prod
+ionic cordova build android --release --prod --aot
 ```
 
 ### Observação
