@@ -39,6 +39,7 @@ allprojects {
     }
 }
 ```
+A solução vai encontrada [aqui](https://stackoverflow.com/questions/61320302/java-util-concurrent-executionexception-com-android-builder-internal-aapt-v2-aa).
 
 ## Passo 3 - Gerar um Key (somente 1 vez)
 Ao publicar o App pela primeira vez, é necessário gerar uma key(chave). Nas próximas versões é só utilizar a key(chave) gerada.
