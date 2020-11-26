@@ -21,6 +21,25 @@ Gerar o apk não assinado com o comando abaixo
 ionic cordova build android --release --prod
 ```
 
+### Observação
+Caso você tenha o seguinte problema:
+
+> What went wrong: Execution failed for task ':app:mergeReleaseResources'.
+> java.util.concurrent.ExecutionException: com.android.builder.internal.aapt.v2.Aapt2InternalException: AAPT2 aapt2-3.3.0-5013011-windows Daemon #2: Unexpected error during compile 'E:\Unnati\WorkSpace\gita\platforms\android\app\src\main\res\drawable-land-xxxhdpi\screen.png', attempting to stop daemon. This should not happen under normal circumstances, please file an issue if it does.
+
+Procure o arquivo **build.gradle** e adicione isso:
+```
+allprojects {
+    // Workaround for https://issuetracker.google.com/117900475
+    // Remove when upgrading to AGP 3.4 or higher.
+    configurations.matching { it.name == '_internal_aapt2_binary' }.all { config ->
+        config.resolutionStrategy.eachDependency { details ->
+            details.useVersion("3.5.0-alpha03-5252756")
+        }
+    }
+}
+```
+
 ## Passo 3 - Gerar um Key (somente 1 vez)
 Ao publicar o App pela primeira vez, é necessário gerar uma key(chave). Nas próximas versões é só utilizar a key(chave) gerada.
 
